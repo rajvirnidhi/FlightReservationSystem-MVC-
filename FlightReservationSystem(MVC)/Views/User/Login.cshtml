@@ -1,0 +1,36 @@
+﻿@model User
+<form method="post" style=" width: 50vw; margin-left : 25vw;">
+	<div class="border p-3 " style="width: 650px;  background: rgba(0, 0, 0, 0.3);">
+		<div class="row pb-2">
+			<h1 class="text-light" style="text-align:center"><strong>Sign up</strong></h1>
+			<hr/>
+		</div>
+		<div class="row row-space">
+			<div class="col-12">
+				<label asp-for="email" style="color:white">Email</label>
+				<input asp-for="email" class="form-control" />
+				<span asp-validation-for="email" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="row row-space">
+			<div class="col-12">
+				<label asp-for="password" style="color:white">Enter Password</label>
+				@*<input asp-for="password" class="form-control" />*@
+				<input type="password" class="form-control" asp-for="password"/>
+				<span asp-validation-for="password" class="text-danger" ></span>
+			</div>
+		</div>
+		<br>
+		<div class="row row-space">
+			<div class="col-3"></div>
+			<div class="col-3" >
+				<button type="submit" class="btn btn-primary" style="width:150px">Login</button>
+			</div>
+			<div class="col-3">
+				<a asp-controller="Home" asp-action="Index" class="btn btn-secondary" style="width:150px">
+					Back to home
+				</a>
+			</div>
+		</div>
+	</div>
+</form>

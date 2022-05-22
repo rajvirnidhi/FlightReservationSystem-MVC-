@@ -1,0 +1,88 @@
+﻿@*capture the model that we passed from category controller*@
+@model IEnumerable<Flight>
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_UserLayout";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Flight List</h2>
+        </div>
+    </div>
+
+<table class="table table-bordered table-striped" style="width:100%; background: rgba(0, 0, 0, 0.3);">
+    <thead>
+        <tr>
+            <th>
+                Flight Id
+            </th>
+            <th>
+                Flight Name
+            </th>
+            <th>
+                Source
+            </th>
+            <th>
+                Destination
+            </th>
+            <th>
+                Hours
+            </th>
+            <th>
+                Seats
+            </th>
+            <th>
+                Days
+            </th>
+            <th>
+                Cost
+            </th>
+            <th>
+                Book Flight
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @*iterate through all of the properties in the model*@
+        @foreach(var obj in Model)
+        {
+            <tr style="text-align:center">
+                <td width=10%>
+                    @obj.flightid
+                </td>
+                <td width=10%>
+                    @obj.name
+                </td>
+                <td width=10%>
+                    @obj.source
+                </td>
+                <td width=10%>
+                    @obj.destination
+                </td>
+                <td width=10%>
+                    @obj.hours
+                </td>
+                <td width=10%>
+                    @obj.seats
+                </td>
+                <td width=10%>
+                    @obj.days
+                </td>
+                <td width=10%>
+                    @obj.cost
+                </td>
+                <td width=10%>
+                    <a asp-controller="UserHome" asp-action="Book" asp-route-id="@obj.flightid" asp-route-email="@ViewBag.email" class="btn btn-secondary" style="font-size:small; height:30px">
+                        <i class="bi bi-pencil-square"></i>
+					    Book
+				    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

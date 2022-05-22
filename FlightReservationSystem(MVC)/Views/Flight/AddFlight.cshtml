@@ -1,0 +1,77 @@
+﻿@model Flight
+@{
+    ViewData["Title"] = "Add flight details";
+}
+@{
+    Layout = "_AdminLayout";
+}
+<br /><br />
+
+<form method="post" style=" width: 50vw; margin-left : 25vw;">
+	<div class="border p-3 " style="width: 650px;  background: rgba(0, 0, 0, 0.3);">
+		<div class="row pb-2">
+			<h1 class="text-light" style="text-align:center"><strong>Add Flight Details</strong></h1>
+			<hr/>
+		</div>
+		<div class="row row-space">
+			<div class="col-6">
+				<label asp-for="flightid" style="color:white">Flight Id</label>
+				<input asp-for="flightid" class="form-control" />
+				<span asp-validation-for="flightid" class="text-danger"></span>
+			</div>
+			<div class="col-6">
+				<label asp-for="name"style="color:white">Flight Name</label>
+				<input asp-for="name" class="form-control" />
+				<span asp-validation-for="name" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="row row-space">
+			<div class="col-6">
+				<label asp-for="source" style="color:white">Source Name</label>
+				<input asp-for="source" class="form-control" />
+				<span asp-validation-for="source" class="text-danger"></span>
+			</div>
+			<div class="col-6">
+				<label asp-for="destination"style="color:white">Destination Name</label>
+				<input asp-for="destination" class="form-control" />
+				<span asp-validation-for="destination" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="row row-space">
+			<div class="col-6">
+				<label asp-for="days" style="color:white">Available days</label>
+				<input asp-for="days" class="form-control" />
+				<span asp-validation-for="days" class="text-danger"></span>
+			</div>
+			<div class="col-6">
+				<label asp-for="hours"style="color:white">Flight Hours</label>
+				<input asp-for="hours" class="form-control" />
+				<span asp-validation-for="hours" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="row row-space">
+			<div class="col-6">
+				<label asp-for="seats" style="color:white">Number of seats</label>
+				<input asp-for="seats" class="form-control" />
+				<span asp-validation-for="seats" class="text-danger"></span>
+			</div>
+			<div class="col-6">
+				<label asp-for="cost"style="color:white">Flight cost</label>
+				<input asp-for="cost" class="form-control" />
+				<span asp-validation-for="cost" class="text-danger"></span>
+			</div>
+		</div>
+		<br>
+		<div class="row row-space">
+			<div class="col-3"></div>
+			<div class="col-3" >
+				<button type="submit" class="btn btn-primary" style="width:150px">Submit</button>
+			</div>
+			<div class="col-3">
+				<a asp-controller="Flight" asp-action="UpdateFlight" class="btn btn-secondary" style="width:150px">
+					Flight details
+				</a>
+			</div>
+		</div>
+	</div>
+</form>
