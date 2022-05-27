@@ -16,23 +16,31 @@ namespace FlightReservationSystem_MVC_.Controllers
         }
         public IActionResult Index(User user)
         {
-            _user = user;
-            _email = user.email;
             ViewBag.email = user.email;
-            return RedirectToAction("ViewFlight", user);
+            //=================change
+            //return RedirectToAction("ViewFlight", user);
+            return View();
         }
 
-        public IActionResult ViewFlight(User user)
+        /*public IActionResult Index(string email)
+        {
+            ViewBag.email = email;
+            //=================change
+            //return RedirectToAction("ViewFlight", user);
+            return View();
+        }*/
+
+        /*public IActionResult ViewFlight(User user)
         {
             _user = user;
             IEnumerable<Flight> objFlightList = _db.FlightDetails;
             ViewBag.email = _user.email;
             return View(objFlightList);
-        }
+        }*/
 
         public IActionResult Book(string? id, string? email)
         {
-            if (id == null)
+            if (id == null || email == null)
             {
                 return NotFound();
             }
@@ -102,13 +110,13 @@ namespace FlightReservationSystem_MVC_.Controllers
             return RedirectToAction("ViewFlight", book);
         }
 
-        public IActionResult ViewBooking(Booking book)
+        /*public IActionResult ViewBooking(Booking book)
         {
             bool userExist = _db.Booking.Any(x => x.email == book.email);
             Booking userBooking = _db.Booking.FirstOrDefault(x => x.email == book.email);
             IEnumerable<Booking> objBookingList = _db.Booking;
             return View(objBookingList);
-        }
+        }*/
 
         public IActionResult Delete(int id)
         {
@@ -134,6 +142,31 @@ namespace FlightReservationSystem_MVC_.Controllers
             _db.Booking.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("ViewBooking", obj);
+        }
+
+
+
+
+
+
+
+
+        //=======================================================================
+        //New
+        public IActionResult ViewFlight(string email)
+        {
+            IEnumerable<Flight> objFlightList = _db.FlightDetails;
+            ViewBag.email = email;
+            return View(objFlightList);
+        }
+
+        public IActionResult ViewBooking(string email)
+        {
+            bool userExist = _db.Booking.Any(x => x.email == email);
+            ViewBag.email = email;
+            Booking userBooking = _db.Booking.FirstOrDefault(x => x.email == email);
+            IEnumerable<Booking> objBookingList = _db.Booking;
+            return View(objBookingList);
         }
 
     }

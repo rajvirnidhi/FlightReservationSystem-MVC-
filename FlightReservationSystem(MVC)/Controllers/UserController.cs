@@ -56,7 +56,9 @@ namespace FlightReservationSystem_MVC_.Controllers
                 {
                     return RedirectToAction("Index", "Admin");
                 }
-                return RedirectToAction("Index", "UserHome",user);
+                string email=obj.email;
+                //change=============================== user to user.email
+                return RedirectToAction("Index", "UserHome", user);
             }
             ModelState.AddModelError("", "Username or password does not match");
             return View();

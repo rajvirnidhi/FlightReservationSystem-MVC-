@@ -44,33 +44,41 @@
         @*iterate through all of the properties in the model*@
         @foreach(var obj in Model)
         {
-            <tr style="text-align:center">
-                <td width=10%>
-                    @obj.flightid
-                </td>
-                <td width=10%>
-                    @obj.name
-                </td>
-                <td width=10%>
-                    @obj.source
-                </td>
-                <td width=10%>
-                    @obj.destination
-                </td>
-                <td width=10%>
-                    @obj.cost
-                </td>
-                <td width=10%>
-                    @obj.FName @obj.LName
-                </td>
-                <td>
-                    <a asp-controller="UserHome" asp-action="Delete" asp-route-id="@obj.BookingId" class="btn btn-danger" style="font-size:small; height:30px">
-                        <i class="bi bi-trash-fill"></i>
-					    Delete
-				    </a>
-                </td>
-            </tr>
-        }
+                if (obj.email == @ViewBag.email)
+                {
+
+                    <tr style="text-align:center">
+                        <td width=10%>
+                            @obj.flightid
+                        </td>
+                        <td width=10%>
+                            @obj.name
+                        </td>
+                        <td width=10%>
+                            @obj.source
+                        </td>
+                        <td width=10%>
+                            @obj.destination
+                        </td>
+                        <td width=10%>
+                            @obj.cost
+                        </td>
+                        <td width=10%>
+                            @obj.FName @obj.LName
+                        </td>
+                        <td>
+                            <a asp-controller="UserHome" asp-action="Delete" asp-route-id="@obj.BookingId" class="btn btn-danger" style="font-size:small; height:30px">
+                                <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
+    <a asp-controller="UserHome" asp-action="Index" asp-route-email="@ViewBag.email" class="btn btn-success" style="font-size:small; height:30px">
+        <i class="bi bi-house-fill"></i>
+	    Home
+    </a>
 </div>

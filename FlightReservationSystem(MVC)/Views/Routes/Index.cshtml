@@ -38,7 +38,15 @@ Create New
             <th>
                 To
             </th>
-            <th></th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                Delete
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -55,9 +63,13 @@ Create New
                 @item.ToRoute
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.RouteID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RouteID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RouteID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.RouteID" class="btn btn-success" style="font-size:small; height:30px">Edit</a>
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.RouteID" class="btn btn-primary" style="font-size:small; height:30px">Details</a>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.RouteID" class="btn btn-danger" style="font-size:small; height:30px">Delete</a>
             </td>
         </tr>
 }
